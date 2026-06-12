@@ -12,13 +12,23 @@ interface ProjectSidebarProps {
   onClose: () => void
 }
 
+/**
+ * Floating project sidebar that overlays the editor canvas.
+ *
+ * Slides in from the left using M3 emphasized easing (`duration-500`).
+ * Contains a "Projects" header, shadcn `Tabs` (My Projects / Shared) with
+ * empty-state placeholders, and a full-width "New Project" footer button.
+ *
+ * Stacking: sidebar panel is `z-50`, backdrop is `z-30` (below navbar `z-40`
+ * so the toggle remains clickable).
+ */
 export function ProjectSidebar({ isOpen, onClose }: ProjectSidebarProps) {
   return (
     <>
       {/* Backdrop overlay */}
       <div
         className={cn(
-          "fixed inset-0 z-40 bg-black/40 transition-opacity duration-300",
+          "fixed inset-0 z-30 bg-black/40 transition-opacity duration-300",
           isOpen
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0"
@@ -86,7 +96,7 @@ export function ProjectSidebar({ isOpen, onClose }: ProjectSidebarProps) {
   )
 }
 
-/* ── Empty placeholder state ── */
+/** Empty placeholder state shown inside sidebar tabs when no items exist. */
 function EmptyState({ label }: { label: string }) {
   return (
     <div className="flex flex-col items-center gap-3 py-10 text-center">

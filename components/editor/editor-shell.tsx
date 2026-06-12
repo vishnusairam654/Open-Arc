@@ -8,6 +8,14 @@ interface EditorShellProps {
   children: React.ReactNode
 }
 
+/**
+ * Top-level layout shell for the editor workspace.
+ *
+ * Manages the sidebar open/closed state and composes {@link EditorNavbar}
+ * (fixed top bar with toggle) and {@link ProjectSidebar} (floating overlay
+ * panel). The `children` prop is rendered in the main canvas area below the
+ * navbar.
+ */
 export function EditorShell({ children }: EditorShellProps) {
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false)
 

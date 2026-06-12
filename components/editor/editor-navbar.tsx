@@ -8,6 +8,16 @@ interface EditorNavbarProps {
   onToggleSidebar: () => void
 }
 
+/**
+ * Fixed-height top navbar for the editor workspace.
+ *
+ * Renders left, center, and right sections. The left section contains a
+ * sidebar toggle button that switches between `PanelLeftOpen` and
+ * `PanelLeftClose` icons based on `isSidebarOpen`. The right section is
+ * reserved for future actions.
+ *
+ * Stacking: `z-40` — must remain above the ProjectSidebar backdrop (`z-30`).
+ */
 export function EditorNavbar({
   isSidebarOpen,
   onToggleSidebar,
